@@ -18,7 +18,7 @@
     "url": "git+https://github.com/corno/astn-ide-lib.git"
   },
   "dependencies": {
-    "astn-ide-api": "^0.1.1",
+    "astn-ide-api": "^0.1.2",
     "astn-tokenconsumer-api": "^0.3.1",
     "astn-typedtreehandler-api": "^0.7.1",
     "pareto-runtime": "^0.22.0"
