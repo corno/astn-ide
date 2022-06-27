@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "astn-ide-api": "^0.1.1",
-    "astn-typedtreehandler-api": "^0.6.0",
+    "astn-typedtreehandler-api": "^0.7.1",
     "pareto-runtime": "^0.22.0"
   },
   "scripts": {},
