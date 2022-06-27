@@ -1,0 +1,13 @@
+/api/dist/
+/api/node_modules/
+/api/src/generated/
+/dev/dist/
+/dev/node_modules/
+/lib/dist/
+/lib/node_modules/
+/lib/src/generated/
+/pareto/node_modules/
+/test/dist/
+/test/node_modules/
+/test/src/generated/
+/tmp

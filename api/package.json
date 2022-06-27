@@ -1,0 +1,23 @@
+{
+  "author": "Corno",
+  "bugs": {
+    "url": "https://github.com/corno/astn-ide-api/issues"
+  },
+  "description": "",
+  "homepage": "https://github.com/corno/astn-ide-api#readme",
+  "keywords": [],
+  "files": [
+    "dist"
+  ],
+  "license": "ISC",
+  "main": "./dist",
+  "types": "./dist",
+  "name": "astn-ide-api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corno/astn-ide-api.git"
+  },
+  "dependencies": {},
+  "scripts": {},
+  "version": "0.1.1"
+}

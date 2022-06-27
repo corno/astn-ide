@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "analysePackage": "./scripts/analysePackage.sh",
+    "analyseTypeScript": "./scripts/analyseAllTypeScriptProjects.sh",
+    "buildAndTest": "./scripts/buildAndTest.sh",
+    "pubMinAPI": "./scripts/publish.sh minor api",
+    "pubMinLib": "./scripts/publish.sh minor lib",
+    "pubPatchAPI": "./scripts/publish.sh patch api",
+    "pubPatchLib": "./scripts/publish.sh patch lib",
+    "update2latest": "./scripts/update2latest.sh",
+    "update2latestAndPublishMinor": "./scripts/update2latestAndPublish.sh minor",
+    "update2latestAndPublishPath": "./scripts/update2latestAndPublish.sh patch"
+  },
+  "dependencies": {
+    "npm-check-updates": "^14.1.1",
+    "npm-safe-install": "^1.1.0",
+    "pareto-ts-validator": "^0.11.0"
+  }
+}
