@@ -1,7 +1,7 @@
 import * as pr from "pareto-runtime"
 
 import { ITypedTreeHandler, ITypedValueHandler } from "astn-typedtreehandler-api"
-import { AnnotatedToken } from "astn-parser-api"
+import { AnnotatedToken } from "astn-tokenconsumer-api"
 
 type GetHoverText = () => string
 

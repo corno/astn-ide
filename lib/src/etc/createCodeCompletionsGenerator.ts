@@ -1,7 +1,7 @@
 
 import { GroupDefinition, ValueDefinition, TaggedUnionDefinition } from "astn-typedtreehandler-api"
 import { ITypedTreeHandler, ITypedValueHandler, IGroupHandler } from "astn-typedtreehandler-api"
-import { AnnotatedToken } from "astn-parser-api"
+import { AnnotatedToken } from "astn-tokenconsumer-api"
 import * as pr from "pareto-runtime"
 
 type GetCodeCompletions = () => string[]
