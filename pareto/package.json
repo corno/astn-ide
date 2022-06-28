@@ -3,17 +3,17 @@
     "analysePackage": "./scripts/analysePackage.sh",
     "analyseTypeScript": "./scripts/analyseAllTypeScriptProjects.sh",
     "buildAndTest": "./scripts/buildAndTest.sh",
-    "pubMinAPI": "./scripts/publish.sh minor api",
-    "pubMinLib": "./scripts/publish.sh minor lib",
-    "pubPatchAPI": "./scripts/publish.sh patch api",
-    "pubPatchLib": "./scripts/publish.sh patch lib",
-    "update2latest": "./scripts/update2latest.sh",
-    "update2latestAndPublishMinor": "./scripts/update2latestAndPublish.sh minor",
-    "update2latestAndPublishPath": "./scripts/update2latestAndPublish.sh patch"
+    "pub-API-min": "./scripts/publish.sh minor api",
+    "pub-API-patch": "./scripts/publish.sh patch api",
+    "pub-lib-min": "./scripts/publish.sh minor lib",
+    "pub-lib-patch": "./scripts/publish.sh patch lib",
+    "pub-bin-min": "./scripts/publish.sh minor bin",
+    "pub-bin-patch": "./scripts/publish.sh patch bin",
+    "update2latest": "./scripts/update2latest.sh"
   },
   "dependencies": {
     "npm-check-updates": "^14.1.1",
     "npm-safe-install": "^1.1.0",
-    "pareto-ts-validator": "^0.13.2"
+    "pareto-ts-validator": "^0.13.3"
   }
 }

@@ -21,7 +21,7 @@ $dir/buildAndTest.sh && \
 #####$dir/analyseAllTypeScriptProjects.sh && \
 
 #bump version and store in variable
-pushd ../$2 && \
+pushd ../$2 > /dev/null && \
 newVersion=$(npm version "$1") && \
 popd && \
 
@@ -34,6 +34,6 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-pushd ../$2 && \
+pushd ../$2 > /dev/null && \
 npm publish && \
 popd
