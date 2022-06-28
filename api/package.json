@@ -18,6 +18,6 @@
     "url": "git+https://github.com/corno/astn-ide-api.git"
   },
   "scripts": {},
-  "version": "0.1.3",
+  "version": "0.1.4",
   "content-fingerprint": "ad8f7f316db1f486aec912d23edda946b555307a"
 }
