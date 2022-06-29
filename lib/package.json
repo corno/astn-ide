@@ -24,6 +24,6 @@
     "pareto-runtime": "^0.22.0"
   },
   "scripts": {},
-  "version": "0.2.0",
-  "content-fingerprint": "5eebbe2b4df01a42bae3359958781ffa63f79f21"
+  "version": "0.2.1",
+  "content-fingerprint": "21344a1ac375d4c32c14b1119894f1398748ebce"
 }
