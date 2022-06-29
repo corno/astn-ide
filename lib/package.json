@@ -20,7 +20,7 @@
   "dependencies": {
     "astn-ide-api": "^0.1.4",
     "astn-tokenconsumer-api": "^0.3.2",
-    "astn-typedtreehandler-api": "^0.7.1",
+    "astn-typedtreehandler-api": "^0.7.3",
     "pareto-runtime": "^0.22.0"
   },
   "scripts": {},
