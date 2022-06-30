@@ -2,12 +2,12 @@
 import { GroupDefinition, ValueDefinition, TaggedUnionDefinition } from "astn-typedtreehandler-api"
 import { ITypedTreeHandler, ITypedValueHandler, IGroupHandler } from "astn-typedtreehandler-api"
 import { AnnotatedToken } from "astn-tokenconsumer-api"
-import * as pr from "pareto-runtime"
+import * as pl from "pareto-lang-lib"
 
 type GetCodeCompletions = () => string[]
 
 export type SerializeString = (rawValue: string, quoted: boolean) => string
-    
+
 type OnToken<EventAnnotation> = (
     annotation: EventAnnotation,
     getCodeCompletionsInToken: GetCodeCompletions | null,
@@ -24,21 +24,21 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
         root: ILine
         serialize: () => string[]
     }
-    
+
     interface IStep {
         addOption: () => ILine
     }
-    
+
     interface IBlock {
         addLine: () => ILine
     }
-    
+
     interface ILine {
         snippet(str: string): void
         indent(callback: ($: IBlock) => void): void
         addTaggedUnionStep: () => IStep
     }
-    
+
     function createCodeCompletionForValue(
         value: ValueDefinition,
         sequence: ILine,
@@ -88,10 +88,10 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                 break
             }
             default:
-                pr.au(value.type[0])
+                pl.au(value.type[0])
         }
     }
-    
+
     function createCodeCompletionForShorthandValue(
         definition: ValueDefinition,
         sequence: ILine,
@@ -112,7 +112,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             },
         )
     }
-    
+
     function createCodeCompletionForShorthandGroup(
         group: GroupDefinition,
         sequence: ILine,
@@ -124,7 +124,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             )
         })
     }
-    
+
     function createCodeCompletionsForTaggedUnion(
         $: TaggedUnionDefinition,
         sequence: ILine,
@@ -135,7 +135,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             sequence
         )
     }
-    
+
     function createCodeCompletionForVerboseValue(prop: ValueDefinition, sequence: ILine): void {
         createCodeCompletionForValue(
             prop,
@@ -151,7 +151,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             },
         )
     }
-    
+
     function createCodeCompletionForVerboseProperties(
         group: GroupDefinition,
         sequence: ILine,
@@ -169,7 +169,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             sequence.snippet(' ')
         }
     }
-    
+
     function createAlternativesRoot(): IAlternativesRoot {
         type StepType =
             | ["block", {
@@ -182,13 +182,13 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                 "alts": ASequence[]
             }]
         type ASequence = StepType[]
-    
+
         type ABlock = {
             lines: ASequence[]
         }
-    
+
         const rootSequence: ASequence = []
-    
+
         function createBlock(imp: ABlock): IBlock {
             return {
                 addLine: () => {
@@ -198,7 +198,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                 },
             }
         }
-    
+
         function createSequence(imp: ASequence): ILine {
             return {
                 indent: (callback) => {
@@ -229,7 +229,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                 },
             }
         }
-    
+
         return {
             root: createSequence(rootSequence),
             serialize: () => {
@@ -244,10 +244,10 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                 function ser(seed: string[], s: ASequence, add: (str: string) => void): void {
                     let out = seed
                     for (let i = 0; i !== s.length; i += 1) {
-                        const step = pr.getElement(s, i)
+                        const step = s[i]
                         switch (step[0]) {
                             case "block":
-                                pr.cc(step[1], (step2) => {
+                                pl.cc(step[1], (step2) => {
                                     indentationLevel += 1
                                     step2.block.lines.forEach((l) => {
                                         const temp: string[] = []
@@ -261,27 +261,27 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                                 })
                                 break
                             case "snippet":
-                                pr.cc(step[1], (step2) => {
+                                pl.cc(step[1], (step2) => {
                                     out = out.map((str) => {
                                         return str + step2.value
                                     })
                                 })
                                 break
                             case "tagged union":
-                                pr.cc(step[1], (step2) => {
+                                pl.cc(step[1], (step2) => {
                                     const temp: string[] = []
                                     for (let j = 0; j !== step2.alts.length; j += 1) {
-                                        const alt = pr.getElement(step2.alts, j)
+                                        const alt = step2.alts[j]
                                         ser(out, alt, (str) => temp.push(str))
                                     }
                                     out = temp
                                 })
                                 break
                             default:
-                                pr.au(step[0])
+                                pl.au(step[0])
                         }
                     }
-    
+
                     out.forEach((str) => {
                         add(str)
                     })
@@ -292,7 +292,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             },
         }
     }
-    
+
     function createCodeCompletionsForValue(
         definition: ValueDefinition,
         line: ILine,
@@ -316,7 +316,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                     verbose,
                 )
                 verbose.snippet(`)`)
-    
+
                 const shorthand = tus.addOption()
                 shorthand.snippet(` <`)
                 createCodeCompletionForShorthandGroup(
@@ -327,7 +327,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             }
         )
     }
-    
+
     function createValueHandler(
     ): ITypedValueHandler<EventAnnotation> {
         function ifToken<Data>(
@@ -506,7 +506,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                             [],
                         )
                     case "shorthand":
-                        return pr.cc($.type[1], ($) => {
+                        return pl.cc($.type[1], ($) => {
                             const alternatives = createAlternativesRoot()
                             createCodeCompletionForShorthandGroup(
                                 definition,
@@ -518,7 +518,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                             )
                         })
                     case "verbose":
-                        return pr.cc($.type[1], ($) => {
+                        return pl.cc($.type[1], ($) => {
                             const alternatives = createAlternativesRoot()
                             createCodeCompletionForVerboseProperties(definition, alternatives.root)
                             return doGroup(
@@ -527,7 +527,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
                             )
                         })
                     default:
-                        return pr.au($.type[0])
+                        return pl.au($.type[0])
                 }
             },
         }

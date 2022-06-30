@@ -2,7 +2,7 @@
 
 if [ -d $1 ]
 then
-    pushd > /dev/null $1 && \
+    pushd $1 > /dev/null && \
     ncu -u --packageFile package.json && \
     nsi && \
     popd

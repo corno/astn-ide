@@ -1,10 +1,10 @@
 {
   "author": "Corno",
   "bugs": {
-    "url": "https://github.com/corno/astn-ide-lib/issues"
+    "url": "https://github.com/corno/astn-ide/issues"
   },
   "description": "",
-  "homepage": "https://github.com/corno/astn-ide-lib#readme",
+  "homepage": "https://github.com/corno/astn-ide#readme",
   "keywords": [],
   "files": [
     "dist"
@@ -15,15 +15,16 @@
   "name": "astn-ide-lib",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/corno/astn-ide-lib.git"
+    "url": "git+https://github.com/corno/astn-ide.git"
   },
   "dependencies": {
     "astn-ide-api": "^0.1.4",
-    "astn-tokenconsumer-api": "^0.3.2",
-    "astn-typedtreehandler-api": "^0.7.3",
-    "pareto-runtime": "^0.22.0"
+    "astn-tokenconsumer-api": "^0.3.4",
+    "astn-typedtreehandler-api": "^0.7.4",
+    "pareto-lang-lib": "^0.7.0",
+    "pareto-runtime": "^0.23.0"
   },
   "scripts": {},
   "version": "0.2.1",
-  "content-fingerprint": "21344a1ac375d4c32c14b1119894f1398748ebce"
+  "content-fingerprint": "a92697e56ed2c401037f01c829e14768d17096b2"
 }

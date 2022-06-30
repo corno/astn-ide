@@ -1,4 +1,4 @@
-import * as pr from "pareto-runtime"
+import * as pl from "pareto-lang-lib"
 
 import { ITypedTreeHandler, ITypedValueHandler } from "astn-typedtreehandler-api"
 import { AnnotatedToken } from "astn-tokenconsumer-api"
@@ -81,17 +81,17 @@ export function createHoverTextsGenerator<EventAnnotation>(
                     case "omitted":
                         break
                     case "verbose":
-                        pr.cc($.type[1], ($) => {
+                        pl.cc($.type[1], ($) => {
                             addOnToken($)
                         })
                         break
                     case "shorthand":
-                        pr.cc($.type[1], ($) => {
+                        pl.cc($.type[1], ($) => {
                             addOnToken($)
                         })
                         break
                     default:
-                        pr.au($.type[0])
+                        pl.au($.type[0])
                 }
                 return {
                     onUnexpectedProperty: () => { },
