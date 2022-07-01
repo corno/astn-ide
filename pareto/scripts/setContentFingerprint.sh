@@ -5,9 +5,9 @@
 #the version should not be part of that
 #if I publish the exact same package under 2 version numbers, the fingerprint should be the same
 
-if [ -d $1 ]
+if [ -d "$1" ]
 then
-    pushd $1 > /dev/null
+    pushd "$1" > /dev/null
 
     #get the version property from the package.json file
     #then trim the quotes before and after
@@ -21,8 +21,8 @@ then
     #create a shasum of that and then trim to the first 40 characters of that shasum (the rest is filename info, which in this case is: ' -')
     contentfingerprint=$(npm pack --dry-run --json | shasum | cut -c1-40)
 
-    npm pkg set version=$version #restore version
-    npm pkg set content-fingerprint=$contentfingerprint #restore version
+    npm pkg set version="$version" #restore version
+    npm pkg set content-fingerprint="$contentfingerprint" #restore version
 
     popd
 fi

@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -d $1 ]
+if [ -d "$1" ]
 then
-    pushd $1 > /dev/null && \
-    ncu -u --packageFile package.json && \
-    nsi && \
-    popd
+    npx npm-check-updates -u --packageFile "$1/package.json" && \
+    npx npm-safe-install -t "$1/"
 fi
