@@ -10,9 +10,12 @@
     "pub-bin-min": "./scripts/publish.sh minor bin",
     "pub-bin-patch": "./scripts/publish.sh patch bin",
     "update2latestBuildEnvironment": "./scripts/update2latestBuildEnvironment.sh",
-    "update2latestDependencies": "./scripts/update2latestDependencies.sh"
+    "update2latestDependencies": "./scripts/update2latestDependencies.sh",
+    "is api changed": "./scripts/isPackageChanged.sh api",
+    "is bin changed": "./scripts/isPackageChanged.sh bin",
+    "is lib changed": "./scripts/isPackageChanged.sh lib"
   },
   "dependencies": {
-    "pareto-ts-validator-lib": "^0.19.4"
+    "pareto-ts-validator-lib": "^0.20.0"
   }
 }

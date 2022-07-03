@@ -13,7 +13,17 @@ then
     cp ./node_modules/pareto-ts-validator-lib/data/_apiGlobals.ts ../api/src/
 fi
 
-parts=("lib" "bin" "test")
+if [ -d "../lib/" ]
+then
+    nativeFlag=$(npm --prefix "../lib" pkg get native )
+    if [ $nativeFlag != "true" ]
+    then
+        cp ./node_modules/pareto-ts-validator-lib/data/tsconfig.json ../lib/
+        cp ./node_modules/pareto-ts-validator-lib/data/_libGlobals.ts ../lib/src/
+    fi
+fi
+
+parts=("bin" "test")
 for part in "${parts[@]}"
 do
     if [ -d "../$part/" ]

@@ -16,11 +16,6 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 #validate that everything is still committed after the update and build
 git diff --exit-code && \
 
-
-#analyse
-#####$dir/analysePackage.sh && \
-#####$dir/analyseAllTypeScriptProjects.sh && \
-
 #bump version and store in variable
 pushd "../$2" > /dev/null && \
 newVersion=$(npm version "$1") && \
