@@ -101,10 +101,10 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
             sequence,
             ($) => {
                 const step = sequence.addTaggedUnionStep()
-                $.options.forEach((option, optionName) => {
+                $.options.toArray().forEach((option) => {
                     const seq = step.addOption()
-                    seq.snippet(` '${optionName}'`)
-                    createCodeCompletionForShorthandValue(option.value, seq)
+                    seq.snippet(` '${option.key}'`)
+                    createCodeCompletionForShorthandValue(option.value.value, seq)
                 })
             },
             ($) => {
@@ -117,9 +117,9 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
         group: GroupDefinition,
         sequence: ILine,
     ): void {
-        group.properties.forEach((prop, _propKey) => {
+        group.properties.toArray().forEach((prop) => {
             createCodeCompletionForShorthandValue(
-                prop.value,
+                prop.value.value,
                 sequence,
             )
         })
@@ -158,11 +158,11 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     ): void {
         let dirty = false
         sequence.indent(($) => {
-            group.properties.forEach((prop, propKey) => {
+            group.properties.toArray().forEach((prop) => {
                 dirty = true
                 const line = $.addLine()
-                line.snippet(`'${propKey}':`)
-                createCodeCompletionForVerboseValue(prop.value, line)
+                line.snippet(`'${prop.key}':`)
+                createCodeCompletionForVerboseValue(prop.value.value, line)
             })
         })
         if (!dirty) {
