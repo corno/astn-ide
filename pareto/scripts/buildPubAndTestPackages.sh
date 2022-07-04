@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
 scriptDir=`realpath $(dirname "$0")`
 
-$scriptDir/buildPackage.sh $(pwd)/../api && \
-$scriptDir/setContentFingerprint.sh $(pwd)/../api && \
-$scriptDir/buildPackage.sh $(pwd)/../lib && \
-$scriptDir/setContentFingerprint.sh $(pwd)/../lib && \
+#api
+$scriptDir/buildPackage.sh "$(pwd)/../api" && \
+$scriptDir/setContentFingerprint.sh "$(pwd)/../api" && \
 
-#only execute these 2 if the build was successful
-{
-    find ../lib/dist/esc/bin/* ../lib/dist/bin/* -name "*.js" -exec chmod 777 {} + 2> /dev/null
-    $scriptDir/buildPackage.sh $(pwd)/../test
-}
+#lib
+$scriptDir/buildPackage.sh "$(pwd)/../lib" && \
+$scriptDir/setContentFingerprint.sh "$(pwd)/../lib" && \
+
+#test
+$scriptDir/buildPackage.sh "$(pwd)/../test" && \
+
+#bin
+$scriptDir/buildPackage.sh "$(pwd)/../bin" && \
+$scriptDir/setContentFingerprint.sh "$(pwd)/../bin" && \
+
+if [ -d "$(pwd)/../bin" ]
+then
+    find ../bin/dist/bin/* -name "*.js" -exec chmod 777 {} +
+fi

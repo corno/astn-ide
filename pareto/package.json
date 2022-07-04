@@ -16,6 +16,6 @@
     "is lib changed": "./scripts/isPackageChanged.sh lib"
   },
   "dependencies": {
-    "pareto-ts-validator-lib": "^0.20.0"
+    "pareto-ts-validator-lib": "^0.22.0"
   }
 }

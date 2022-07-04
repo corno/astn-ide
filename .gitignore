@@ -1,6 +1,9 @@
 /api/dist/
 /api/node_modules/
 /api/src/generated/
+/bin/dist/
+/bin/node_modules/
+/bin/src/generated/
 /dev/dist/
 /dev/node_modules/
 /lib/dist/
