@@ -1,5 +1,5 @@
 
-import { ITypedTreeHandler } from "astn-typedtreehandler-api"
+import * as tth from "astn-typedtreehandler-api"
 
 import { createCodeCompletionsGenerator, SerializeString } from "./createCodeCompletionsGenerator"
 import { isPositionBeforeLocation } from "./isPositionBeforeLocation"
@@ -11,7 +11,7 @@ export function createCodeCompletionFinder(
     callback: (codeCompletion: string) => void,
     getEndLocationFromRange: (range: tok.Range) => tok.Location,
     serializeString: SerializeString,
-): ITypedTreeHandler<tok.TokenizerAnnotationData> {
+): tth.ITypedTreeHandler<tok.TokenizerAnnotationData> {
     function onPositionInContextOfRange(
         positionLine: number,
         positionCharacter: number,

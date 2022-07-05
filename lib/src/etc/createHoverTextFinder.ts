@@ -1,5 +1,5 @@
 import { isPositionBeforeLocation } from "./isPositionBeforeLocation"
-import { ITypedTreeHandler } from "astn-typedtreehandler-api"
+import * as tth from "astn-typedtreehandler-api"
 import { createHoverTextsGenerator } from "./createHoverTextsGenerator"
 import * as tok from "astn-ide-api"
 import { getEndLocationFromRange } from "./getEndLocationFromRange"
@@ -8,7 +8,7 @@ export function createHoverTextFinder(
     positionLine: number, //the line where the hover is requested
     positionCharacter: number, //the character where the hover is requested
     callback: (hoverText: string) => void,
-): ITypedTreeHandler<tok.TokenizerAnnotationData> {
+): tth.ITypedTreeHandler<tok.TokenizerAnnotationData> {
     return createHoverTextsGenerator(
         (annotation, getHoverText) => {
             //console.log("LOCATION", range.start.line, range.start.column, range.end.line, range.end.column)

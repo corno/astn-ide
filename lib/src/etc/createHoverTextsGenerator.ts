@@ -1,6 +1,6 @@
 import * as pl from "pareto-lang-lib"
 
-import { ITypedTreeHandler, ITypedValueHandler } from "astn-typedtreehandler-api"
+import * as tth from "astn-typedtreehandler-api"
 import { AnnotatedToken } from "astn-tokenconsumer-api"
 
 type GetHoverText = () => string
@@ -14,11 +14,11 @@ export type OnTokenHoverText<EventAnnotation> = (
 export function createHoverTextsGenerator<EventAnnotation>(
     onToken: OnTokenHoverText<EventAnnotation>,
     onEnd: () => void,
-): ITypedTreeHandler<EventAnnotation> {
+): tth.ITypedTreeHandler<EventAnnotation> {
 
     function createValueHoverTextGenerator(
         name: string | null,
-    ): ITypedValueHandler<EventAnnotation> {
+    ): tth.ITypedValueHandler<EventAnnotation> {
         function addOnToken<Token>(token: AnnotatedToken<Token, EventAnnotation> | null) {
             if (name !== null) {
                 const cn = name

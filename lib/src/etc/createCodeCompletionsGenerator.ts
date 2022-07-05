@@ -1,6 +1,5 @@
 
-import { GroupDefinition, ValueDefinition, TaggedUnionDefinition } from "astn-typedtreehandler-api"
-import { ITypedTreeHandler, ITypedValueHandler, IGroupHandler } from "astn-typedtreehandler-api"
+import * as tth from "astn-typedtreehandler-api"
 import { AnnotatedToken } from "astn-tokenconsumer-api"
 import * as pl from "pareto-lang-lib"
 
@@ -19,7 +18,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     onEnd: () => void,
     serializeString: SerializeString
 
-): ITypedTreeHandler<EventAnnotation> {
+): tth.ITypedTreeHandler<EventAnnotation> {
     interface IAlternativesRoot {
         root: ILine
         serialize: () => string[]
@@ -40,10 +39,10 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     }
 
     function createCodeCompletionForValue(
-        value: ValueDefinition,
+        value: tth.ValueDefinition,
         sequence: ILine,
-        onTaggedUnion: (def: TaggedUnionDefinition) => void,
-        onGroup: (def: GroupDefinition) => void,
+        onTaggedUnion: (def: tth.TaggedUnionDefinition) => void,
+        onGroup: (def: tth.GroupDefinition) => void,
     ): void {
         switch (value.type[0]) {
             case "dictionary": {
@@ -93,7 +92,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     }
 
     function createCodeCompletionForShorthandValue(
-        definition: ValueDefinition,
+        definition: tth.ValueDefinition,
         sequence: ILine,
     ): void {
         createCodeCompletionForValue(
@@ -114,7 +113,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     }
 
     function createCodeCompletionForShorthandGroup(
-        group: GroupDefinition,
+        group: tth.GroupDefinition,
         sequence: ILine,
     ): void {
         group.properties.toArray().forEach((prop) => {
@@ -126,7 +125,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     }
 
     function createCodeCompletionsForTaggedUnion(
-        $: TaggedUnionDefinition,
+        $: tth.TaggedUnionDefinition,
         sequence: ILine,
     ): void {
         sequence.snippet(` '${$["default option"].name}'`)
@@ -136,7 +135,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
         )
     }
 
-    function createCodeCompletionForVerboseValue(prop: ValueDefinition, sequence: ILine): void {
+    function createCodeCompletionForVerboseValue(prop: tth.ValueDefinition, sequence: ILine): void {
         createCodeCompletionForValue(
             prop,
             sequence,
@@ -153,7 +152,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     }
 
     function createCodeCompletionForVerboseProperties(
-        group: GroupDefinition,
+        group: tth.GroupDefinition,
         sequence: ILine,
     ): void {
         let dirty = false
@@ -294,7 +293,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     }
 
     function createCodeCompletionsForValue(
-        definition: ValueDefinition,
+        definition: tth.ValueDefinition,
         line: ILine,
     ): void {
         createCodeCompletionForValue(
@@ -329,7 +328,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
     }
 
     function createValueHandler(
-    ): ITypedValueHandler<EventAnnotation> {
+    ): tth.ITypedValueHandler<EventAnnotation> {
         function ifToken<Data>(
             token: AnnotatedToken<Data, EventAnnotation> | null,
             inToken: GetCodeCompletions | null,
@@ -355,7 +354,7 @@ export function createCodeCompletionsGenerator<EventAnnotation>(
         function doGroup(
             annotation: EventAnnotation | null,
             alternatives: string[],
-        ): IGroupHandler<EventAnnotation> {
+        ): tth.IGroupHandler<EventAnnotation> {
             if (annotation !== null) {
                 onToken(
                     annotation,
