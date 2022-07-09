@@ -10,6 +10,9 @@
 /lib/node_modules/
 /lib/src/generated/
 /pareto/node_modules/
+/res/dist/
+/res/node_modules/
+/res/src/generated/
 /test/dist/
 /test/node_modules/
 /test/src/generated/
