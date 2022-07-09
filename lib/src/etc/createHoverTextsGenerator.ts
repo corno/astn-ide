@@ -1,4 +1,4 @@
-import * as pl from "pareto-lang-lib"
+import * as pl from "pareto-lib-core"
 
 import * as tth from "astn-typedtreehandler-api"
 import { AnnotatedToken } from "astn-tokenconsumer-api"

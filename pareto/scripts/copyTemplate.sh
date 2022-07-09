@@ -23,6 +23,8 @@ then
     fi
 fi
 
+#never copy for '../res'
+
 parts=("bin" "test")
 for part in "${parts[@]}"
 do
@@ -35,4 +37,4 @@ do
 done
 
 #update this package because the copied package.json contains an old version of pareto-ts-validator-lib (by design, the template is not updated every time the package is published)
-"$dir/updatePackage.sh" .
+"$dir/updatePackage.sh" pareto

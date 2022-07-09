@@ -2,20 +2,35 @@
   "scripts": {
     "analysePackage": "./scripts/analysePackage.sh",
     "analyseTypeScript": "./scripts/analyseAllTypeScriptProjects.sh",
-    "buildAndTest": "./scripts/buildAndTest.sh",
-    "pub-API-min": "./scripts/publish.sh minor api",
-    "pub-API-patch": "./scripts/publish.sh patch api",
-    "pub-lib-min": "./scripts/publish.sh minor lib",
-    "pub-lib-patch": "./scripts/publish.sh patch lib",
-    "pub-bin-min": "./scripts/publish.sh minor bin",
-    "pub-bin-patch": "./scripts/publish.sh patch bin",
     "update2latestBuildEnvironment": "./scripts/update2latestBuildEnvironment.sh",
-    "update2latestDependencies": "./scripts/update2latestDependencies.sh",
-    "is api changed": "./scripts/isPackageChanged.sh api",
-    "is bin changed": "./scripts/isPackageChanged.sh bin",
-    "is lib changed": "./scripts/isPackageChanged.sh lib"
+
+    "dev-update-dependencies": "./scripts/updatePackage.sh dev",
+
+    "api-update-dependencies": "./scripts/updatePackage.sh api",
+    "api is changed": "./scripts/isPackageChanged.sh api",
+    "api-pub-patch": "./scripts/publish.sh patch api",
+    "api-pub-min": "./scripts/publish.sh minor api",
+
+    "bin-update-dependencies": "./scripts/updatePackage.sh bin",
+    "bin is changed": "./scripts/isPackageChanged.sh bin",
+    "bin-pub-patch": "./scripts/publish.sh patch bin",
+    "bin-pub-min": "./scripts/publish.sh minor bin",
+
+    "lib-update-dependencies": "./scripts/updatePackage.sh lib",
+    "lib is changed": "./scripts/isPackageChanged.sh lib",
+    "lib-pub-patch": "./scripts/publish.sh patch lib",
+    "lib-pub-min": "./scripts/publish.sh minor lib",
+
+    "res-update-dependencies": "./scripts/updatePackage.sh res",
+    "res is changed": "./scripts/isPackageChanged.sh res",
+    "res-pub-patch": "./scripts/publish.sh patch res",
+    "res-pub-min": "./scripts/publish.sh minor res",
+
+    "test-update-dependencies": "./scripts/updatePackage.sh test",
+
+    "buildAndTest": "./scripts/buildAndTest.sh"
   },
   "dependencies": {
-    "pareto-ts-validator-lib": "^0.22.0"
+    "pareto-ts-validator-lib": "^0.27.0"
   }
 }

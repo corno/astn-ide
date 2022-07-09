@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-if [ -d "$1" ]
+part="../$1"
+
+if [ -d "$part" ]
 then
-    npx npm-check-updates -u --packageFile "$1/package.json" && \
-    npx npm-safe-install -t "$1/"
+    npx npm-check-updates -u --packageFile "$part/package.json" && \
+    npx npm-safe-install -t "$part/"
 fi

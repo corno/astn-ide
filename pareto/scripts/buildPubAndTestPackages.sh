@@ -9,6 +9,11 @@ $scriptDir/setContentFingerprint.sh "$(pwd)/../api" && \
 $scriptDir/buildPackage.sh "$(pwd)/../lib" && \
 $scriptDir/setContentFingerprint.sh "$(pwd)/../lib" && \
 
+
+#res
+$scriptDir/buildPackage.sh "$(pwd)/../res" && \
+$scriptDir/setContentFingerprint.sh "$(pwd)/../res" && \
+
 #test
 $scriptDir/buildPackage.sh "$(pwd)/../test" && \
 
